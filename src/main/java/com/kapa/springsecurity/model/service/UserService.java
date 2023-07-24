@@ -2,11 +2,9 @@ package com.kapa.springsecurity.model.service;
 
 import com.kapa.springsecurity.mapper.UserMapper;
 import com.kapa.springsecurity.model.dto.UserDto;
-import com.kapa.springsecurity.model.entity.Role;
 import com.kapa.springsecurity.model.entity.User;
 import com.kapa.springsecurity.model.repository.UserRepository;
 import com.kapa.springsecurity.model.service.interfaces.IUserService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

@@ -1,5 +1,8 @@
 package com.kapa.springsecurity.controller;
 
+import com.kapa.springsecurity.exception.unchecked.ArithmeticEx;
+import com.kapa.springsecurity.exception.unchecked.CustomException;
+import com.kapa.springsecurity.model.dto.ExceptionDto;
 import com.kapa.springsecurity.model.dto.UserDto;
 import com.kapa.springsecurity.model.entity.User;
 import com.kapa.springsecurity.model.service.interfaces.IUserService;
@@ -32,8 +35,12 @@ public class UserController {
         return ResponseEntity.ok(userService.toEntityUser(userDto));
     }
     @PostMapping("/test")
-    public ResponseEntity<Integer> test(@RequestParam int a, @RequestAttribute int b){
-
-        return ResponseEntity.ok(a/b);
+    public ResponseEntity<Integer> test(@RequestParam int a, @RequestParam int b){
+        try {
+            //throw new NotFoundException();
+            return ResponseEntity.ok(a/b);
+        }catch (RuntimeException exception){
+            throw new CustomException(new ExceptionDto().setMessage("ok"));
+        }
     }
 }
